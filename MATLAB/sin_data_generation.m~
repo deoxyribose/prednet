@@ -1,0 +1,14 @@
+function [A] = sin_data_generation(Ninput, Nseq, Ndata, model, dx)
+    
+    x = (0:(Nseq-1))*dx;
+    p = rand(Ndata,Ninput);
+    d = rand(Ndata, Nseq);
+    for i = 1:Ndata
+        for j = 1:Nseq
+            d(i,j) = model(x(j),p(i,:));
+        end
+    end
+    A.x = x;
+    A.p = p;
+    A.d = d;
+end
